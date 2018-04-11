@@ -1,9 +1,68 @@
 package doggyDaycare.doggyDaycare;
 
-public class DogDao {
+import java.util.List;
 
-	public DogDao() {
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+
+
+
+public class DogDao {
+	
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Doggy-Daycare");
+	
+	public void cleanUp()
+	{
+		emfactory.close();
+	}
+	
+	public void insertDog(Dog doge) 
+	{
+		// TODO Auto-generated method stub
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(doge);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public Dog searchForDogById(Integer tempId) 
+	{
+		// TODO Auto-generated method stub
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		Dog found = em.find(Dog.class, tempId);
+		em.close();
+		return found;
+	}
+
+	public void updatDog(Dog dogToEdit) 
+	{
+		// TODO Auto-generated method stub
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
 		
+		em.merge(dogToEdit);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public List<Dog> viewAllDogs() 
+	{
+		// TODO Auto-generated method stub
+		EntityManager em = emfactory.createEntityManager();
+		TypedQuery<Dog> typedQuery = em.createQuery("select doge from Dog doge", Dog.class);
+		List<Dog> allDogs = typedQuery.getResultList();
+		em.close();
+		return allDogs;
+	}
+
+	public List<Dog> viewOnlyActive() 
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
