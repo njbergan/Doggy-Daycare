@@ -1,6 +1,8 @@
 package doggyDaycare.doggyDaycare;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Dog {
 	
@@ -13,6 +15,8 @@ public class Dog {
 	private int vaccinations;
 	private Date lastVisit;
 	private int activeFlag;
+	private List<Dog> dogsToAvoid;
+	private List<String> conflictDescriptions;
 	
 	public Dog(String name) {
 		this.name = name;
@@ -88,6 +92,32 @@ public class Dog {
 
 	public void setActiveFlag(int activeFlag) {
 		this.activeFlag = activeFlag;
+	}
+	
+	public List<Dog> getDogsToAvoid(){
+		return dogsToAvoid;
+	}
+	
+	public void setDogsToAvoid(List<Dog> dogsToAvoid){
+		this.dogsToAvoid = dogsToAvoid;
+	}
+	
+	public void addDogToAvoid(Dog dog)
+	{
+		dogsToAvoid.add(dog);
+	}
+	
+	public List<String> getConflictDescriptions(){
+		return conflictDescriptions;
+	}
+	
+	public void setConflictDescriptions(List<String> conflictDescriptions){
+		this.conflictDescriptions = conflictDescriptions;
+	}
+	
+	public void addConflictDescriptions(String description)
+	{
+		conflictDescriptions.add(description);
 	}
 
 	@Override
