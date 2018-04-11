@@ -1,7 +1,5 @@
 package doggyDaycare.doggyDaycare;
 
-package LocalWorkspace.Local;
-
 import java.util.Date;
 
 public class Dog {
