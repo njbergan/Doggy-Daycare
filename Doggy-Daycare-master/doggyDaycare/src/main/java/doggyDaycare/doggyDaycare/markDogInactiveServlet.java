@@ -37,7 +37,7 @@ public class markDogInactiveServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
 		DogDao dao = new DogDao();
-        Integer active = Integer.parseInt(request.getParameter("activeFlag"));
+        	Boolean active = Boolean.parseBoolean(request.getParameter("activeFlag"));
 
 		Integer tempId = Integer.parseInt(request.getParameter("dogId"));
 		Dog doge = dao.searchForDogById(tempId);
