@@ -46,9 +46,9 @@ public class UpdateDogServlet extends HttpServlet {
         String breed = request.getParameter("breed");
 		String gender = request.getParameter("gender");
 		String registrationDate = request.getParameter("registrationDate");
-		int vaccinations = Integer.parseInt(request.getParameter("vaccinations"));
-        String lastVisit = request.getParameter("lastVisit");
-        Integer active = Integer.parseInt(request.getParameter("activeFlag"));
+		boolean vaccinations = Boolean.parseBoolean(request.getParameter("vaccinations"));
+		String lastVisit = request.getParameter("lastVisit");
+		boolean active = Boolean.parseBoolean(request.getParameter("activeFlag"));
         SimpleDateFormat rDate = new SimpleDateFormat("dd-MM-yyyy");
         Date registration = null;
 		try {

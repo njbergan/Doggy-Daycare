@@ -37,19 +37,19 @@ public class Dog {
 	@Column(name="Gender")
 	private String gender;
 	@Column(name="Registration_Date", columnDefinition="DATE DEFAULT CURRENT_DATE")
-	private java.sql.Date registrationDate;
+	private Date registrationDate;
 	@Column(name="Vaccinated", nullable=false)
 	private boolean vaccinations = true;
 	@Column(name="Last_Visit")
-	private java.sql.Date lastVisit;
+	private Date lastVisit;
 	@Column(name="Active_Flag", nullable=false)
 	private boolean activeFlag;
 	
 	@ManyToOne
 	private Owner owner;
 	
-	public Dog(int ownerId, String name, String breed, String gender, java.sql.Date registrationDate, boolean vaccinations,
-			java.sql.Date lastVisit, boolean activeFlag) {
+	public Dog(int ownerId, String name, String breed, String gender, Date registrationDate, boolean vaccinations,
+			Date lastVisit, boolean activeFlag) {
 		super();
 		this.ownerId = ownerId;
 		this.name = name;
@@ -114,7 +114,7 @@ public class Dog {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(java.sql.Date registrationDate) {
+	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
@@ -130,7 +130,7 @@ public class Dog {
 		return lastVisit;
 	}
 
-	public void setLastVisit(java.sql.Date lastVisit) {
+	public void setLastVisit(Date lastVisit) {
 		this.lastVisit = lastVisit;
 	}
 
