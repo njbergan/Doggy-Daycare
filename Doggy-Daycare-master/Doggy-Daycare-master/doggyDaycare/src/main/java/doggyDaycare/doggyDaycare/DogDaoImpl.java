@@ -18,5 +18,14 @@ public class DogDaoImpl implements DogDao{
 		dogsMap.put(dog.getDogId(),dog);
 		
 	}
-
+	public void active(long id) {
+		if (dogsMap.get(id).getActiveFlag() == 0)
+		{
+			dogsMap.get(id).setActiveFlag(1);
+		}
+		else
+		{
+			dogsMap.get(id).setActiveFlag(0);
+		}
+	}
 }
