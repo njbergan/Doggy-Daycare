@@ -2,17 +2,69 @@ package doggyDaycare.doggyDaycare;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="dog")
 public class Dog {
 	
-	private long dogId;
-	private long ownerId;
+//	private long dogId;
+//	private long ownerId;
+//	private String name;
+//	private String breed;
+//	private String gender;
+//	private Date registrationDate;
+//	private int vaccinations;
+//	private Date lastVisit;
+//	private int activeFlag;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="Dog_ID")
+	private int dogId;
+	@Column(name="Owner_ID")
+	private int ownerId;
+	@Column(name="Name")
 	private String name;
+	@Column(name="Breed")
 	private String breed;
+	@Column(name="Gender")
 	private String gender;
+	@Column(name="Registration_Date", columnDefinition="DATE DEFAULT CURRENT_DATE")
 	private Date registrationDate;
-	private int vaccinations;
+	@Column(name="Vaccinated", nullable=false)
+	private boolean vaccinations = true;
+	@Column(name="Last_Visit")
 	private Date lastVisit;
-	private int activeFlag;
+	@Column(name="Active_Flag", nullable=false)
+	private boolean activeFlag;
+	
+	@ManyToOne
+	private Owner owner;
+	
+	public Dog(int ownerId, String name, String breed, String gender, Date registrationDate, boolean vaccinations,
+			Date lastVisit, boolean activeFlag) {
+		super();
+		this.ownerId = ownerId;
+		this.name = name;
+		this.breed = breed;
+		this.gender = gender;
+		this.registrationDate = registrationDate;
+		this.vaccinations = vaccinations;
+		this.lastVisit = lastVisit;
+		this.activeFlag = activeFlag;
+	}
+	
+	public Dog() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Dog(String name) {
 		this.name = name;
@@ -22,7 +74,7 @@ public class Dog {
 		return dogId;
 	}
 
-	public void setDogId(long dogId) {
+	public void setDogId(int dogId) {
 		this.dogId = dogId;
 	}
 
@@ -30,7 +82,7 @@ public class Dog {
 		return ownerId;
 	}
 
-	public void setOwnerId(long ownerId) {
+	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
 	}
 
@@ -66,11 +118,11 @@ public class Dog {
 		this.registrationDate = registrationDate;
 	}
 
-	public int getVaccinations() {
+	public boolean getVaccinations() {
 		return vaccinations;
 	}
 
-	public void setVaccinations(int vaccinations) {
+	public void setVaccinations(boolean vaccinations) {
 		this.vaccinations = vaccinations;
 	}
 
@@ -82,11 +134,11 @@ public class Dog {
 		this.lastVisit = lastVisit;
 	}
 
-	public int getActiveFlag() {
+	public boolean getActiveFlag() {
 		return activeFlag;
 	}
 
-	public void setActiveFlag(int activeFlag) {
+	public void setActiveFlag(boolean activeFlag) {
 		this.activeFlag = activeFlag;
 	}
 
@@ -94,7 +146,7 @@ public class Dog {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + activeFlag;
+		result = prime * result + Boolean.hashCode(activeFlag);
 		result = prime * result + ((breed == null) ? 0 : breed.hashCode());
 		result = prime * result + (int) (dogId ^ (dogId >>> 32));
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
@@ -102,7 +154,7 @@ public class Dog {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + (int) (ownerId ^ (ownerId >>> 32));
 		result = prime * result + ((registrationDate == null) ? 0 : registrationDate.hashCode());
-		result = prime * result + vaccinations;
+		result = prime * result + Boolean.hashCode(vaccinations);
 		return result;
 	}
 
