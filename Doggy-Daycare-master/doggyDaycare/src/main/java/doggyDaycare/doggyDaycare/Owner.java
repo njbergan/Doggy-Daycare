@@ -2,7 +2,7 @@ package doggyDaycare.doggyDaycare;
 
 public class Owner {
 
-	private String ownerId;
+	private int ownerId;
 	private String firstName;
 	private String lastName;
 	private String phone;
@@ -83,7 +83,7 @@ public class Owner {
 		this.zip = zip;
 	}
 
-	public String getOwnerId() {
+	public int getOwnerId() {
 		return ownerId;
 	}
 
