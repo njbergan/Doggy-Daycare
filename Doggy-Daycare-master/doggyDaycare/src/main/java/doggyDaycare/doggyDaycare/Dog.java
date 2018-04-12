@@ -38,12 +38,12 @@ public class Dog {
 	private String gender;
 	@Column(name="Registration_Date", columnDefinition="DATE DEFAULT CURRENT_DATE")
 	private Date registrationDate;
-	@Column(name="Vaccinated", nullable=false)
-	private boolean vaccinations = true;
+	@Column(name="Vaccinated", nullable=false, columnDefinition="BOOLEAN")
+	private Boolean vaccinations = true;
 	@Column(name="Last_Visit")
 	private Date lastVisit;
-	@Column(name="Active_Flag", nullable=false)
-	private boolean activeFlag;
+	@Column(name="Active_Flag", nullable=false, columnDefinition="BOOLEAN")
+	private Boolean activeFlag = true;
 	
 	@ManyToOne
 	private Owner owner;
@@ -134,11 +134,11 @@ public class Dog {
 		this.lastVisit = lastVisit;
 	}
 
-	public boolean getActiveFlag() {
+	public Boolean getActiveFlag() {
 		return activeFlag;
 	}
 
-	public void setActiveFlag(boolean activeFlag) {
+	public void setActiveFlag(Boolean activeFlag) {
 		this.activeFlag = activeFlag;
 	}
 
