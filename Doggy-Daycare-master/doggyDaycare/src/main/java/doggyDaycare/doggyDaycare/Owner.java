@@ -1,5 +1,10 @@
 package doggyDaycare.doggyDaycare;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="owner")
 public class Owner {
 
 	private int ownerId;
