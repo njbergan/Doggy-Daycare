@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Add Dog</title>  
+    <title>Add Owner</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/daycarestyle.css" type="text/css" />
 	
@@ -15,8 +15,8 @@
 		border-radius: 25px;
 		margin-top: 20pt;
 	}	
-	</style>	
-  </head> 
+	</style>
+  </head>
   
   <body>
   	<header>
@@ -40,7 +40,7 @@
 			<i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdownM-content">
-				<a href="">Add</a>
+				<a href="addDog.html">Add</a>
 				<a href="updateDog.html">Update</a>
 				<a href="">Mark Inactive</a>
 			</div>
@@ -51,7 +51,7 @@
 			</button>
 			<div class="dropdownM-content">
 				<a href="addOwner.html">Add</a>
-				<a href="UpdateOwner.html">Update</a>
+				<a href="">Update</a>
 			</div>
 		</div> 
 		<div class="dropdownM">
@@ -88,53 +88,48 @@
 		</div> 
 	</div>
 	
+	
 	<div class="container">
-		<form action="addDogServlet" method="post">
-			<h2 align="center">Add Dog</h2>
+		<form action="updateOwnerServlet" method="post">
+			<h2 align="center">Update Owner</h2>
 			</br>
 			<div class="form-group row"> 
-				<label for="name" class="col-sm-3 col-form-label text-right">Name</label>
+				<label for="firstName" class="col-sm-2 col-form-label text-right">First Name</label>
 				<div class="col-sm-3">
-					<input id="name" type="text" class="form-control" placeholder="Enter Dog's Name">
+					<input id="firstName" type="text" class="form-control" placeholder="Enter First Name">
 				</div>
-				<label for="age" class="col-sm-1 col-form-label text-right">Age</label>
-				<div class="col-sm-1">
-					<input id="age" type="text" class="form-control" >
+				<label for="lastName" class="col-sm-3 col-form-label text-right">Last Name</label>
+				<div class="col-sm-3">
+					<input id="lastName" type="text" class="form-control" placeholder="Enter Last Name">
 				</div>
 			</div>
 			<div class="form-group row"> 
-				<label for="breed" class="col-sm-3 col-form-label text-right">Breed</label>
-				<div class="col-sm-3">
-					<input id="breed" type="text" class="form-control" placeholder="Enter Dog's Breed">
-				</div>
-				<label for="gender" class="col-sm-1 col-form-label text-right">Gender</label>
-				<div class="col-sm-2">
-					<select id="gender" class="form-control">
-						<option value="M" selected>Male</option>
-						<option value="F">Female</option>
-					</select>
-				</div>
-				
-			</div>
-			<div class="form-group row"> 
-				<label for="owner" class="col-sm-3 col-form-label text-right">Owner</label>
+				<label for="street" class="col-sm-2 col-form-label text-right">Street</label>
 				<div class="col-sm-4">
-				  <select id="owner" class="form-control">
-					<option><option>
-					<!-- fill with owner database -->
-				  </select>
+					<input id="street" type="text" class="form-control" placeholder="Enter Street">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="vaccinations" class="col-sm-3 col-form-label text-right">Vaccinated</label>
+				<label for="city" class="col-sm-2 col-form-label text-right">City</label>
 				<div class="col-sm-2">
-					<select id="vaccinations" class="form-control">
-						<option value="Y" selected>Yes</option>
-						<option value="N">No</option>
+					<input id="city" type="text" class="form-control" placeholder="Enter City">
+				</div>
+				<label for="state" class="col-sm-1 col-form-label text-right">State</label>
+				<div class="col-sm-2">
+					<select id="state" class="form-control">
+						<option value="IL">Illinois</option>
+						<option value="IA" selected>Iowa</option>
+						<option value="KS">Kansas</option>
+						<option value="MN">Minnesota</option>
+						<option value="NE">Nebraska</option>
 					</select>
 				</div>
+				<label for="zip" class="col-sm-1 col-form-label text-right">Zip</label>
+				<div class="col-sm-2">
+					<input id="zip" type="text" class="form-control" placeholder="Enter Zip">
+				</div>
 			</div>
-			</br>
+		</br>
 		</form>
   </body>
  </html>
