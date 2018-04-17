@@ -51,7 +51,7 @@ public class OwnerDao {
 	{
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
-		TypedQuery<Owner> typedQuery = em.createQuery("select doge from Owner owner", Owner.class);
+		TypedQuery<Owner> typedQuery = em.createQuery("select owner from Owner owner", Owner.class);
 		List<Owner> allOwners = typedQuery.getResultList();
 		em.close();
 		return allOwners;
