@@ -27,7 +27,7 @@ public class PlaygroundDao {
 		em.close();
 	}
 	
-	public Playground searchForPlaygroundById(Integer tempId) 
+	public Playground searchForPlaygroundById(int tempId) 
 	{
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
