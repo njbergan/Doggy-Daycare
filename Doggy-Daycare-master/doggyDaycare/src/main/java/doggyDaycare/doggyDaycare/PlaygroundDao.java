@@ -48,7 +48,7 @@ public class PlaygroundDao {
 		em.close();
 	}
 	
-	public List<Playground> viewAllDogs() 
+	public List<Playground> viewAllPlaygrounds() 
 	{
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
