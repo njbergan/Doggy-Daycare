@@ -1,19 +1,33 @@
 package doggyDaycare.doggyDaycare;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="owner")
 public class Owner {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="Owner_ID")
 	private int ownerId;
+	@Column(name="First_Name")
 	private String firstName;
+	@Column(name="Last_Name")
 	private String lastName;
+	@Column(name="Phone Number")
 	private String phone;
+	@Column(name="Street_Address")
 	private String street;
+	@Column(name="City")
 	private String city;
+	@Column(name="State")
 	private String state;
+	@Column(name="zip code")
 	private String zip;
 	
 	public Owner() {
