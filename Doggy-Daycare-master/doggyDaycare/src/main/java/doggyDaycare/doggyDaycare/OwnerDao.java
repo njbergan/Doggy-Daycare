@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 public class OwnerDao {
 
@@ -15,7 +16,6 @@ public class OwnerDao {
 		emfactory.close();
 	}
 	
-
 	public void insertOwner(Owner owner) 
 	{
 		// TODO Auto-generated method stub
@@ -29,19 +29,32 @@ public class OwnerDao {
 	public Owner searchForOwnerById(int tempId) 
 	{
 		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		Owner found = em.find(Owner.class, tempId);
+		em.close();
+		return found;
 	}
 
-	public void updateOwner(Owner ownerToUpdate) 
+	public void updatOwner(Owner dogToEdit) 
 	{
 		// TODO Auto-generated method stub
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
 		
+		em.merge(dogToEdit);
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	public List<Owner> viewAllOwners() 
 	{
 		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emfactory.createEntityManager();
+		TypedQuery<Owner> typedQuery = em.createQuery("select doge from Owner owner", Owner.class);
+		List<Owner> allOwners = typedQuery.getResultList();
+		em.close();
+		return allOwners;
 	}
 
 }

@@ -7,8 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-
-
 public class DogDao {
 	
 	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Doggy-Daycare");
@@ -28,7 +26,7 @@ public class DogDao {
 		em.close();
 	}
 
-	public Dog searchForDogById(Integer tempId) 
+	public Dog searchForDogById(int tempId) 
 	{
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
@@ -61,8 +59,10 @@ public class DogDao {
 
 	public List<Dog> viewOnlyActive() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emfactory.createEntityManager();
+		TypedQuery<Dog> typedQuery = em.createQuery("select doge from Dog doge where Active_Flag = true", Dog.class);
+		List<Dog> activeDogs = typedQuery.getResultList();
+		return activeDogs;
 	}
 
 }
