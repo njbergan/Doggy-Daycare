@@ -52,7 +52,7 @@ public class PlaygroundDao {
 	{
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
-		TypedQuery<Playground> typedQuery = em.createQuery("select doge from Dog doge", Playground.class);
+		TypedQuery<Playground> typedQuery = em.createQuery("select playground from Playground playground", Playground.class);
 		List<Playground> allPlaygrounds = typedQuery.getResultList();
 		em.close();
 		return allPlaygrounds;
