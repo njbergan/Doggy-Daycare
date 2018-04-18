@@ -36,7 +36,7 @@ public class OwnerDao {
 		return found;
 	}
 
-	public void updatOwner(Owner dogToEdit) 
+	public void updateOwner(Owner dogToEdit) 
 	{
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();

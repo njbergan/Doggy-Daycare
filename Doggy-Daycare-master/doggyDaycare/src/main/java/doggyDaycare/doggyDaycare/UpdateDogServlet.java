@@ -77,7 +77,7 @@ public class UpdateDogServlet extends HttpServlet {
 		dogToUpdate.setLastVisit(last);
 		dogToUpdate.setActiveFlag(active);
 		
-		dao.updatDog(dogToUpdate);
+		dao.updateDog(dogToUpdate);
 		
 		getServletContext().getRequestDispatcher("/viewAllDogsServlet").forward(request, response);
 	}
