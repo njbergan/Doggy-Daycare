@@ -36,7 +36,7 @@ public class DogDao {
 		return found;
 	}
 
-	public void updatDog(Dog dogToEdit) 
+	public void updateDog(Dog dogToEdit) 
 	{
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();

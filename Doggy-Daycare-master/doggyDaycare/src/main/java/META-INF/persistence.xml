@@ -4,6 +4,9 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>doggyDaycare.doggyDaycare.Dog</class>
 		<class>doggyDaycare.doggyDaycare.Owner</class>
+		<class>doggyDaycare.doggyDaycare.Aggression</class>
+		<class>doggyDaycare.doggyDaycare.Aggressor</class>
+		<class>doggyDaycare.doggyDaycare.Victim</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Dog?autoReconnect=true&amp;useSSL=false"/>
