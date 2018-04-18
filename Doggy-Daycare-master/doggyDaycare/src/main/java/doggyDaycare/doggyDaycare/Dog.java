@@ -69,6 +69,12 @@ public class Dog {
 	public Dog(String name) {
 		this.name = name;
 	}
+	
+	public Dog(int dogId, String name) {
+		super();
+		this.dogId = dogId;
+		this.name = name;
+	}
 
 	public long getDogId() {
 		return dogId;
