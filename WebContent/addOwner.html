@@ -3,7 +3,7 @@
   <head>
     <title>Add Owner</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/daycarestyle.css" type="text/css" />
+	<link rel="stylesheet" href="css/daycarestyles.css" type="text/css" />
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -90,7 +90,7 @@
 	
 	
 	<div class="container">
-		<form action="addOwnerServlet" method="post">
+		<form id="addOwnerForm" action="addOwnerServlet" method="post">
 			<h2 align="center">Add Owner</h2>
 			</br>
 			<div class="form-group row">
@@ -185,7 +185,7 @@
 			return false;	 	
 		} else {
 			err.classList.add("hidden");
-			submit.focus();
+			document.getElementById("addOwnerForm").submit();
 		}  
 	}
   </script>
