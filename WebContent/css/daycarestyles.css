@@ -96,3 +96,12 @@
 		.dropdownM:hover .dropdownM-content {
 			display: block;
 		}
+		
+		.error-box {
+            border: red 1px solid;
+            background-color: red;
+        }
+
+        .hidden {
+            display: none;
+        }
