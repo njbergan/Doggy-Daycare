@@ -89,9 +89,12 @@
 	</div>
 	
 	<div class="container">
-		<form action="updateDogServlet" method="post">
+		<form id="updateDogForm" action="updateDogServlet" method="post">
 			<h2 align="center">Update Dog</h2>
 			</br>
+			<div class="form-group row">
+				<div class="error-box hidden col-sm-6 col-sm-offset-3 text-center">asdfads</div>
+			</div>
 			<div class="form-group row"> 
 				<label for="name" class="col-sm-3 col-form-label text-right">Name</label>
 				<div class="col-sm-3">
@@ -134,7 +137,62 @@
 					</select>
 				</div>
 			</div>
+			<div class="form-group row">
+				<button id="submit" class="col-sm-2 col-sm-offset-5" type="button">Submit</button>
+			</div>
 			</br>
 		</form>
   </body>
+  <script>
+  
+  $("#submit").click(function(){
+	 allEdits();
+  })
+  
+  function allEdits(){
+	var err = document.getElementsByClassName("error-box")[0];
+	var name = document.getElementById("name").value;
+	var age = document.getElementById("age").value;
+	var breed = document.getElementById("breed").value;
+	var gender = document.getElementById("gender").value;
+	var owner = document.getElementById("owner").value;
+	var vaccinations = document.getElementById("vaccinations").value;
+	
+	if (name == "") {		
+		err.innerText = "Name is required";
+		err.classList.remove("hidden");
+		name.focus();
+		return false;	 	
+	} else if (age == "") {		
+		err.innerText = "Age is required";
+		err.classList.remove("hidden");
+		age.focus();
+		return false;	 	
+	} else if (breed == "") {		
+		err.innerText = "Breed is required";
+		err.classList.remove("hidden");
+		breed.focus();
+		return false;	 	
+	} else if (gender == "") {		
+		err.innerText = "Gender is required";
+		err.classList.remove("hidden");
+		gender.focus();
+		return false;	 	
+	} else if (owner == "") {		
+		err.innerText = "Owner is required";
+		err.classList.remove("hidden");
+		owner.focus();
+		return false;	 	
+	}  else if (vaccinations == "") {		
+		err.innerText = "Vaccinations is required";
+		err.classList.remove("hidden");
+		vaccinated.focus();
+		return false;	 	
+	}  else {
+		err.classList.add("hidden");
+		document.getElementById("updateDogForm").submit();
+	}  
+}
+  	
+  </script>
  </html>
