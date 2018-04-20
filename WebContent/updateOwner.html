@@ -90,9 +90,12 @@
 	
 	
 	<div class="container">
-		<form action="updateOwnerServlet" method="post">
+		<form id="updateOwnerForm" action="updateOwnerServlet" method="post">
 			<h2 align="center">Update Owner</h2>
 			</br>
+			<div class="form-group row">
+				<div class="error-box hidden col-sm-6 col-sm-offset-3 text-center">asdfads</div>
+			</div>
 			<div class="form-group row"> 
 				<label for="firstName" class="col-sm-2 col-form-label text-right">First Name</label>
 				<div class="col-sm-3">
@@ -129,7 +132,60 @@
 					<input id="zip" type="text" class="form-control" placeholder="Enter Zip">
 				</div>
 			</div>
+			<div class="form-group row">
+				<button id="submit" class="col-sm-2 col-sm-offset-5" type="button">Submit</button>
+			</div>
 		</br>
 		</form>
   </body>
+   <script>
+  $("#submit").click(function(){
+		 allEdits();
+	  })
+	  
+	  function allEdits(){
+		var err = document.getElementsByClassName("error-box")[0];
+		var fname = document.getElementById("firstName").value;
+		var lname = document.getElementById("lastName").value;
+		var street = document.getElementById("street").value;
+		var city = document.getElementById("city").value;
+		var state = document.getElementById("state").value;
+		var zip = document.getElementById("zip").value;
+		
+		if (fname == "") {		
+			err.innerText = "First name is required";
+			err.classList.remove("hidden");
+			fname.focus();
+			return false;
+		} else if (lname == "") {		
+			err.innerText = "Last name is required";
+			err.classList.remove("hidden");
+			lname.focus();
+			return false;
+		} else if (street == "") {		
+			err.innerText = "Street is required";
+			err.classList.remove("hidden");
+			street.focus();
+			return false;	 	
+		} else if (city == "") {		
+			err.innerText = "City is required";
+			err.classList.remove("hidden");
+			city.focus();
+			return false;	 	
+		} else if (state == "") {		
+			err.innerText = "State is required";
+			err.classList.remove("hidden");
+			state.focus();
+			return false;	 	
+		} else if (zip == "") {		
+			err.innerText = "Zip is required";
+			err.classList.remove("hidden");
+			zip.focus();
+			return false;	 	
+		} else {
+			err.classList.add("hidden");
+			document.getElementById("updateOwnerForm").submit();
+		}  
+	}
+  </script>
  </html>
