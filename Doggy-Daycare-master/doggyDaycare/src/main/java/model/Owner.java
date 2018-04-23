@@ -19,15 +19,15 @@ public class Owner {
 	private String firstName;
 	@Column(name="Last_Name")
 	private String lastName;
-	@Column(name="Phone Number")
+	@Column(name="Phone")
 	private String phone;
-	@Column(name="Street_Address")
+	@Column(name="Street")
 	private String street;
 	@Column(name="City")
 	private String city;
 	@Column(name="State")
 	private String state;
-	@Column(name="zip code")
+	@Column(name="Zip")
 	private String zip;
 	
 	public Owner() {

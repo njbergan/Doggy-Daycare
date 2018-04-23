@@ -34,7 +34,7 @@ public class viewAllOwnersServlet extends HttpServlet {
 		{
 			request.setAttribute("allOwners", " ");
 		}
-		getServletContext().getRequestDispatcher("/all_owners_list.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/addDog.jsp").forward(request, response);
 	}
 
 	/**
