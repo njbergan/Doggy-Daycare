@@ -14,22 +14,14 @@ import javax.persistence.Table;
 @Table(name="dog")
 public class Dog {
 	
-//	private long dogId;
-//	private long ownerId;
-//	private String name;
-//	private String breed;
-//	private String gender;
-//	private Date registrationDate;
-//	private int vaccinations;
-//	private Date lastVisit;
-//	private int activeFlag;
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="Dog_ID")
 	private int dogId;
 	@Column(name="Owner_ID")
 	private int ownerId;
+	@Column(name="Playground_ID")	//new code 4-23
+	private int playgroundId;
 	@Column(name="Name")
 	private String name;
 	@Column(name="Breed")
@@ -48,10 +40,11 @@ public class Dog {
 	@ManyToOne
 	private Owner owner;
 	
-	public Dog(int ownerId, String name, String breed, String gender, Date registrationDate, boolean vaccinations,
+	public Dog(int ownerId, int playgroundId, String name, String breed, String gender, Date registrationDate, boolean vaccinations,
 			Date lastVisit, boolean activeFlag) {
 		super();
 		this.ownerId = ownerId;
+		this.playgroundId = playgroundId;
 		this.name = name;
 		this.breed = breed;
 		this.gender = gender;
@@ -59,11 +52,11 @@ public class Dog {
 		this.vaccinations = vaccinations;
 		this.lastVisit = lastVisit;
 		this.activeFlag = activeFlag;
+	
 	}
 	
 	public Dog() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Dog(String name) {
@@ -90,6 +83,14 @@ public class Dog {
 
 	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
+	}
+	
+	public int getPlaygroundId() {
+		return playgroundId;
+	}
+	
+	public void setPlaygroundId(int playId) {
+		this.playgroundId = playId;
 	}
 
 	public String getName() {
