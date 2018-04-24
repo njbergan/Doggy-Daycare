@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import model.Dog;
@@ -65,6 +66,22 @@ public class DogDao {
 		TypedQuery<Dog> typedQuery = em.createQuery("select doge from Dog doge where Active_Flag = true", Dog.class);
 		List<Dog> activeDogs = typedQuery.getResultList();
 		return activeDogs;
+	}
+	
+	public void removePlaygroundId() {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("UPDATE Dog SET Todays_Playground = null");
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void removeClassId() {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("UPDATE Dog SET Todays_Classes = null");
+		em.getTransaction().commit();
+		em.close();
 	}
 
 }
