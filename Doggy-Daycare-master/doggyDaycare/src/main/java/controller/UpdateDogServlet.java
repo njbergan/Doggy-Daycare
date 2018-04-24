@@ -44,6 +44,7 @@ public class UpdateDogServlet extends HttpServlet {
 		DogDao dao = new DogDao();
 		String name = request.getParameter("name");
         Integer owner = Integer.parseInt(request.getParameter("ownerId"));
+        Integer playground = Integer.parseInt(request.getParameter("playgroundId"));
         String breed = request.getParameter("breed");
 		String gender = request.getParameter("gender");
 		String registrationDate = request.getParameter("registrationDate");
@@ -71,6 +72,7 @@ public class UpdateDogServlet extends HttpServlet {
 		
 		dogToUpdate.setName(name);
 		dogToUpdate.setOwnerId(owner);
+		dogToUpdate.setPlaygroundId(playground);
 		dogToUpdate.setBreed(breed);
 		dogToUpdate.setGender(gender);
 		dogToUpdate.setRegistrationDate(dogToUpdate.convertJavaToSqlDate(registration));
