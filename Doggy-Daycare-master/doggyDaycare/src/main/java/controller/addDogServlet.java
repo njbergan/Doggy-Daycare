@@ -43,6 +43,7 @@ public class addDogServlet extends HttpServlet {
 //		doGet(request, response);
 		String name = request.getParameter("name");
         Integer owner = Integer.parseInt(request.getParameter("ownerId"));
+        Integer playground = Integer.parseInt(request.getParameter("playgroundId"));
         String breed = request.getParameter("breed");
 		String gender = request.getParameter("gender");
 		String registrationDate = request.getParameter("registrationDate");
@@ -68,7 +69,7 @@ public class addDogServlet extends HttpServlet {
         /*
          * <td><input type="time" name=registationDate"/></td>
          */
-		Dog doge = new Dog(owner, name, breed, gender, null, vaccinations, null, active);
+		Dog doge = new Dog(owner, playground, name, breed, gender, null, vaccinations, null, active);
 		doge.setRegistrationDate(doge.convertJavaToSqlDate(registration));
 		doge.setLastVisit(doge.convertJavaToSqlDate(last));
 		DogDao dao = new DogDao();
