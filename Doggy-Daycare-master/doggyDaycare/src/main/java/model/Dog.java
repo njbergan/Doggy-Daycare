@@ -28,6 +28,8 @@ public class Dog {
 	private String breed;
 	@Column(name="Gender")
 	private String gender;
+	@Column(name="Age")
+	private int age;
 	@Column(name="Registration_Date", columnDefinition="DATE DEFAULT CURRENT_DATE")
 	private Date registrationDate;
 	@Column(name="Vaccinated", nullable=false, columnDefinition="BOOLEAN")
@@ -36,6 +38,10 @@ public class Dog {
 	private Date lastVisit;
 	@Column(name="Active_Flag", nullable=false, columnDefinition="BOOLEAN")
 	private Boolean activeFlag = true;
+	@Column(name="Todays_Playground")
+	private int todaysPlayground;
+	@Column(name="Todays_Classes")
+	private int todaysClasses;
 	
 	@ManyToOne
 	private Owner owner;
@@ -117,6 +123,14 @@ public class Dog {
 		this.gender = gender;
 	}
 
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	public Date getRegistrationDate() {
 		return registrationDate;
 	}
@@ -149,6 +163,22 @@ public class Dog {
 		this.activeFlag = activeFlag;
 	}
 	
+	public int getTodaysPlayground() {
+		return todaysPlayground;
+	}
+
+	public void setTodaysPlayground(int todaysPlayground) {
+		this.todaysPlayground = todaysPlayground;
+	}
+
+	public int getTodaysClasses() {
+		return todaysClasses;
+	}
+
+	public void setTodaysClasses(int todaysClasses) {
+		this.todaysClasses = todaysClasses;
+	}
+
 	public java.sql.Date convertJavaToSqlDate(java.util.Date date) {
 		return new java.sql.Date(date.getTime());
 	}
@@ -157,15 +187,19 @@ public class Dog {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Boolean.hashCode(activeFlag);
+		result = prime * result + ((activeFlag == null) ? 0 : activeFlag.hashCode());
+		result = prime * result + age;
 		result = prime * result + ((breed == null) ? 0 : breed.hashCode());
-		result = prime * result + (int) (dogId ^ (dogId >>> 32));
+		result = prime * result + dogId;
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((lastVisit == null) ? 0 : lastVisit.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + (int) (ownerId ^ (ownerId >>> 32));
+		result = prime * result + ownerId;
+		result = prime * result + playgroundId;
 		result = prime * result + ((registrationDate == null) ? 0 : registrationDate.hashCode());
-		result = prime * result + Boolean.hashCode(vaccinations);
+		result = prime * result + todaysClasses;
+		result = prime * result + todaysPlayground;
+		result = prime * result + ((vaccinations == null) ? 0 : vaccinations.hashCode());
 		return result;
 	}
 
@@ -178,7 +212,12 @@ public class Dog {
 		if (getClass() != obj.getClass())
 			return false;
 		Dog other = (Dog) obj;
-		if (activeFlag != other.activeFlag)
+		if (activeFlag == null) {
+			if (other.activeFlag != null)
+				return false;
+		} else if (!activeFlag.equals(other.activeFlag))
+			return false;
+		if (age != other.age)
 			return false;
 		if (breed == null) {
 			if (other.breed != null)
@@ -204,20 +243,30 @@ public class Dog {
 			return false;
 		if (ownerId != other.ownerId)
 			return false;
+		if (playgroundId != other.playgroundId)
+			return false;
 		if (registrationDate == null) {
 			if (other.registrationDate != null)
 				return false;
 		} else if (!registrationDate.equals(other.registrationDate))
 			return false;
-		if (vaccinations != other.vaccinations)
+		if (todaysClasses != other.todaysClasses)
+			return false;
+		if (todaysPlayground != other.todaysPlayground)
+			return false;
+		if (vaccinations == null) {
+			if (other.vaccinations != null)
+				return false;
+		} else if (!vaccinations.equals(other.vaccinations))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Dog [dogId=" + dogId + ", ownerId=" + ownerId + ", name=" + name + ", breed=" + breed + ", gender="
-				+ gender + ", registrationDate=" + registrationDate + ", vaccinations=" + vaccinations + ", lastVisit="
-				+ lastVisit + ", activeFlag=" + activeFlag + "]";
+		return "Dog [dogId=" + dogId + ", ownerId=" + ownerId + ", playgroundId=" + playgroundId + ", name=" + name
+				+ ", breed=" + breed + ", gender=" + gender + ", age=" + age + ", registrationDate=" + registrationDate
+				+ ", vaccinations=" + vaccinations + ", lastVisit=" + lastVisit + ", activeFlag=" + activeFlag
+				+ ", todaysPlayground=" + todaysPlayground + ", todaysClasses=" + todaysClasses + "]";
 	}
 }
