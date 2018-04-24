@@ -7,6 +7,7 @@
 		<class>model.Dog</class>
 		<class>model.Owner</class>
 		<class>model.Victim</class>
+		<class>model.Playground</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/doggy_daycare?autoReconnect=true&amp;useSSL=false"/>
