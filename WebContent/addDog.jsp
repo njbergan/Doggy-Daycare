@@ -126,10 +126,11 @@
 				<label for="owner" class="col-sm-3 col-form-label text-right">Owner</label>
 				<div class="col-sm-4">
 				  <select id="owner" class="form-control" name="owner">
-    				<c:forEach items="${requestScope.allOwners}" var="owner">
+  <!--       				<option>me</option> -->
+    			<c:forEach items="${requestScope.allOwners}" var="owner">
         				<option value="${owner.ownerId}"><c:out value="${owner.firstName}" /></option>
-    				</c:forEach>
-				  </select>
+    			</c:forEach>  	
+			      </select>
 				</div>
 				<a href="viewAllOwnersServlet">get owners</a>
 			</div>
@@ -152,17 +153,22 @@
   <script type="text/javascript">
 $("document").ready(function(){
 
-	$("#owner").click(function(){
-		var url = "viewAllOwnersServlet";
-    	$.ajax({
+	//	var url = "viewAllOwnersServlet";
+  /*  	var url = "/Doggy-Daycare/Doggy-Daycare-master/doggyDaycare/src/main/java/controller/viewAllOwnersServlet.java";
+		$.ajax({
     		type: "GET",
     		url: url,
     		success: function(data){
-    		
+    			console.log(data);
+    			$('#owner').empty();
+    			$.each(data, function(i, obj){
+					var options = "<option value=" + obj.ownerId + ">" + obj.firstName + ", " + obj.lastName + "</option";
+    				alert(options);
+					$(options).appendTo("#owner");
+    			});
     		}
     	});
-   });
-
+*/
   
   $("#submit").click(function(){
 	 e.preventDefault();
