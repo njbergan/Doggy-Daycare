@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityExistsException;
@@ -87,6 +89,36 @@ public class DogDao {
 			em.close();
 		}
 		return activeDogs;
+	}
+	
+	public List<Dog> viewDogsCheckedInToday() {
+		List<Dog> checkedInDogs = null;
+		EntityManager em = emfactory.createEntityManager();
+		try {
+			TypedQuery<Dog> typedQuery = em.createQuery("select doge from Dog doge where Last_Visit = now()",
+					Dog.class);
+			checkedInDogs = typedQuery.getResultList();
+		} catch (IllegalArgumentException e) {
+			System.out.println("Exception found in viewDogsCheckedInToday: " + e);
+		} finally {
+			em.close();
+		}
+		return checkedInDogs;
+	}
+	
+	public List<Dog> viewDogsNotCheckedInThirtyDays() {
+		List<Dog> dogsGreaterThan30Days = null;
+		EntityManager em = emfactory.createEntityManager();
+		try {
+			TypedQuery<Dog> typedQuery = em.createQuery("select doge from Dog doge where Last_Visit >= "
+					+ "(select date_add(now(), interval -30 day))", Dog.class);
+			dogsGreaterThan30Days = typedQuery.getResultList();
+		} catch (IllegalArgumentException e) {
+			System.out.println("Exception found in viewDogsNotCheckedInThirtyDays: " + e);
+		} finally {
+			em.close();
+		}
+		return dogsGreaterThan30Days;
 	}
 
 	public void removePlaygroundId() {
