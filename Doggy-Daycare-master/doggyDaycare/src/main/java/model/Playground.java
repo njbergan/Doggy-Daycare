@@ -1,9 +1,23 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="playground")
 public class Playground {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="Playground_ID")
 	int playgroundId;
+	@Column(name="Name")
 	String name;
+	@Column(name="Location")
 	String location;
 
 	public int getPlaygroundId() {
