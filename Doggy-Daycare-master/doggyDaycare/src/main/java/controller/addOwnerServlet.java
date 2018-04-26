@@ -45,10 +45,11 @@ public class addOwnerServlet extends HttpServlet {
 		String city = request.getParameter("city");
 		String state = request.getParameter("state");
 		String zip = request.getParameter("zip");
+		boolean active = Boolean.parseBoolean(request.getParameter("activeFlag"));
 		Owner owner = new Owner(first, last, phone, street, city, state, zip);
 		OwnerDao dao = new OwnerDao();
 		dao.insertOwner(owner);
-		getServletContext().getRequestDispatcher("/addOwner.html").forward(request, response);
+		getServletContext().getRequestDispatcher("/addOwner.jsp").forward(request, response);
 	}
 
 }

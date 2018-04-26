@@ -82,7 +82,7 @@ public class UpdateDogServlet extends HttpServlet {
 		
 		dao.updateDog(dogToUpdate);
 		
-		getServletContext().getRequestDispatcher("/viewAllDogsServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/updateDog.jsp").forward(request, response);
 	}
 
 }

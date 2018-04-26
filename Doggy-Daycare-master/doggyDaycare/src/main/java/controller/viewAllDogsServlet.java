@@ -34,8 +34,8 @@ public class viewAllDogsServlet extends HttpServlet {
 		{
 			request.setAttribute("allDogs", " ");
 		}
-		getServletContext().getRequestDispatcher("/all_dogs_list.jsp").forward(request, response);
-	}
+		getServletContext().getRequestDispatcher("/updateDog.jsp").forward(request, response);
+	}  
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
