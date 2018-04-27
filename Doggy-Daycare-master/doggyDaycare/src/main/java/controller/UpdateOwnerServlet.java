@@ -47,7 +47,7 @@ public class UpdateOwnerServlet extends HttpServlet {
 		String state = request.getParameter("state");
 		String zip = request.getParameter("zip");
         
-		int tempId = Integer.parseInt(request.getParameter("OwnerId"));
+		int tempId = Integer.parseInt(request.getParameter("ownerId"));
         Owner ownerToUpdate = dao.searchForOwnerById(tempId);
         
         ownerToUpdate.setFirstName(first);
@@ -60,7 +60,7 @@ public class UpdateOwnerServlet extends HttpServlet {
         
         dao.updateOwner(ownerToUpdate);
         
-		getServletContext().getRequestDispatcher("/viewAllOwnersServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/updateOwner.jsp").forward(request, response);
 	}
 
 }

@@ -42,6 +42,7 @@ public class addDogServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
 		String name = request.getParameter("name");
+		Integer age = Integer.parseInt(request.getParameter("age"));
         Integer owner = Integer.parseInt(request.getParameter("ownerId"));
         Integer playground = Integer.parseInt(request.getParameter("playgroundId"));
         String breed = request.getParameter("breed");
@@ -69,11 +70,11 @@ public class addDogServlet extends HttpServlet {
         /*
          * <td><input type="time" name=registationDate"/></td>
          */
-		Dog doge = new Dog(owner, playground, name, breed, gender, null, vaccinations, null, active);
+		Dog doge = new Dog(owner, age, playground, name, breed, gender, null, vaccinations, null, active);
 		doge.setRegistrationDate(doge.convertJavaToSqlDate(registration));
 		doge.setLastVisit(doge.convertJavaToSqlDate(last));
 		DogDao dao = new DogDao();
-		dao.insertDog(doge);
-		getServletContext().getRequestDispatcher("/addDog.html").forward(request, response);
+		dao.insertDog(doge); 
+		getServletContext().getRequestDispatcher("/addDog.jsp").forward(request, response);
 	}
 }

@@ -43,8 +43,8 @@
 			<i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdownM-content">
-				<a href="">Add</a>
-				<a href="updateDog.jsp">Update</a>
+				<a href="addDog.jsp">Add</a>
+				<a href="">Update</a>
 				<a href="">Mark Inactive</a>
 			</div>
 		</div>
@@ -90,104 +90,104 @@
 			</div>
 		</div> 
 	</div>
+	
 	<div class="container">
-  		<form id="addDogForm" action="addDogServlet" method="post"> 
-			<h2 align="center">Add Dog</h2>
+		<form id="updateDogForm" action="updateDogServlet" method="post">
+			<h2 align="center">Update Dog</h2>
 			<br>
 			<div class="form-group row">
 				<div class="error-box hidden col-sm-6 col-sm-offset-3 text-center"></div>
 			</div>
 			<div class="form-group row"> 
-				<label for="name" class="col-sm-3 col-form-label text-right">Name</label>
+				<label for="dogList" class="col-sm-3 col-form-label text-right">Choose Dog</label>
 				<div class="col-sm-3">
-					<input id="name" type="text" class="form-control" name="name">
+				 <select id="dogList" class="form-control">
+					<c:forEach items="${requestScope.allDogs}" var="pickDog">
+        				<option value="${pickDog.dogId}!${pickDog.ownerId}!${pickDog.name}!${pickDog.breed}!${pickDog.age}!${pickDog.gender}!${pickDog.vaccinations}"><c:out value="${pickDog.name}"/></option>
+    				</c:forEach>
+				  </select>
 				</div>
-				<label for="age" class="col-sm-2 col-form-label text-right">Age</label>
 				<div class="col-sm-1">
-					<input id="age" type="text" class="form-control" name="age">
+					<a href="viewAllDogsServlet">get dogs</a>
+				</div>
+				<label for="age" class="col-sm-1 col-form-label text-right">Age</label>
+				<div class="col-sm-1">
+					<input id="age" type="text" class="form-control" name="age"><c:out value="${pickDog.age}"/>
 				</div>
 			</div>
 			<div class="form-group row"> 
 				<label for="breed" class="col-sm-3 col-form-label text-right">Breed</label>
 				<div class="col-sm-3">
-					<input id="breed" type="text" class="form-control" name="breed">
+					<input id="breed" type="text" class="form-control" name="breed"><c:out value="${pickDog.breed}"/>
 				</div>
 				<label for="gender" class="col-sm-2 col-form-label text-right">Gender M/F</label>
 				<div class="col-sm-1">
-					<input id="gender" type="text" class="form-control" name="gender">
+					<input id="gender" type="text" class="form-control" name="gender"><c:out value="${pickDog.gender}"/>
 				</div>
-				
 			</div>
 			<div class="form-group row"> 
 				<label for="ownerId" class="col-sm-3 col-form-label text-right">Owner</label>
 				<div class="col-sm-4">
-				  <select id="ownerId" class="form-control" name="ownerid">
-    				<c:forEach items="${requestScope.allOwners}" var="owner">
-        				<option value="${owner.ownerId}"><c:out value="${owner.firstName} ${owner.lastName}" /></option>
-    				</c:forEach>  	
-			      </select>
+				  <select id="ownerId" class="form-control" name="ownerId">
+					<c:forEach items="${requestScope.allOwners}" var="pickOwner" >
+        				<option value="${pickOwner.ownerId}"><c:out value="${pickOwner.firstName}, ${pickOwner.lastName}"/></option>
+    				</c:forEach>
+				  </select>
 				</div>
-				<a href="viewAllOwnersServlet?fromJsp=addDog.jsp">get owners</a>
+				<a href="viewAllOwnersServlet">get owners</a>
 			</div>
 			<div class="form-group row">
 				<label for="vaccinations" class="col-sm-3 col-form-label text-right">Vaccinated Y/N</label>
 				<div class="col-sm-1">
-					<input id="vaccinations" type="text" class="form-control" name="vaccinations">
-				</div>
+					<input id="vaccinations" type="text" class="form-control" name="vaccinations"><c:out value="${pickDog.vaccinations}"/>
+				</div> 
 			</div>
-			<input type="hidden" name="fromJsp" value="/addDog.jsp">
-			<input type="hidden" name="playgroundId" value="1">
-			<input type="hidden" name="activeFlag" value="1">
-			<input type="hidden" name="registrationDate" value="25-4-2018">
-			<input type="hidden" name="lastVisit" value="25-4-2018">
-	 <!-- 	<input type="hidden" name="ownerId" value="1009"> --> 
 			<div class="form-group row">
-	<!-- 			<button id="submit" class="col-sm-2 col-sm-offset-5" type="button">Submit</button> -->
-				<input class="col-sm-2 col-sm-offset-5" type="submit" value="Submit">
+		<!-- 	<button id="submit" class="col-sm-2 col-sm-offset-5" type="button">Submit</button> -->
+				<input class="col-sm-2 col-sm-offset-5" type="submit" value="Submit"> 
 			</div>
 			<br>
+			<input type="hidden" id="dogId" name="dogId">
+			<input type="hidden" id="name" name="name">
 		</form>
-	  </div>
+	</div>
   </body>
   <script type="text/javascript">
-$("document").ready(function(){
-
-	//	var url = "viewAllOwnersServlet";
-  /*  	var url = "/Doggy-Daycare/Doggy-Daycare-master/doggyDaycare/src/main/java/controller/viewAllOwnersServlet";
-		$.ajax({
-    		type: "GET",
-    		url: url,
-    		success: function(data){
-    			console.log(data);
-    			$('#owner').empty();
-    			$.each(data, function(i, obj){
-					var options = "<option value=" + obj.ownerId + ">" + obj.firstName + ", " + obj.lastName + "</option";
-    				alert(options);
-					$(options).appendTo("#owner");
-    			});
-    		}
-    	});
-*/
- 
-  $("#submit").click(function(e){
+$("document").ready(function(){ 
+  
+  $("#dogList").change(function(){
+	  fillInFields();
+  })
+  
+  $("#submit").click(function(){
 	 e.preventDefault();
 	 allEdits();
-	document.getElementById("addDogForm").submit();
   })
+  
+  function fillInFields(){ 
+	  var fields = document.getElementById("dogList").value.split("!");
+	  $("#dogId").val(fields[0]);
+	  $("#ownerId").val(fields[1]);
+	  $("#name").val(fields[2]);
+	  $("#breed").val(fields[3]);
+	  $("#age").val(fields[4]);
+	  $("#gender").val(fields[5]);
+	  $("#vaccinations").val(fields[5]);
+  }
   
   function allEdits(){
 	var err = document.getElementsByClassName("error-box")[0];
-	var name = document.getElementById("name").value;
+	var dog = document.getElementById("dogId").value;
 	var age = document.getElementById("age").value;
 	var breed = document.getElementById("breed").value;
 	var gender = document.getElementById("gender").value;
-	var owner = document.getElementById("ownerId").value;
+	var owner = document.getElementById("owner").value;
 	var vaccinations = document.getElementById("vaccinations").value;
 	
-	if (name == "") {		
-		err.innerText = "Name is required";
+	if (dog == "") {		
+		err.innerText = "Dog is required";
 		err.classList.remove("hidden");
-		name.focus();
+		dogList.focus();
 		return false;	 	
 	} else if (age == "") {		
 		err.innerText = "Age is required";
@@ -204,7 +204,7 @@ $("document").ready(function(){
 		err.classList.remove("hidden");
 		gender.focus();
 		return false;	 	
-	} else if (owner == "") {		
+	} else if (ownerId == "") {		
 		err.innerText = "Owner is required";
 		err.classList.remove("hidden");
 		ownerId.focus();
@@ -216,9 +216,9 @@ $("document").ready(function(){
 		return false;	 	
 	}  else {
 		err.classList.add("hidden");
+		document.getElementById("updateDogForm").submit();
 	}  
-  }
-});	
-  	
+}
+});	 	
   </script>
  </html>

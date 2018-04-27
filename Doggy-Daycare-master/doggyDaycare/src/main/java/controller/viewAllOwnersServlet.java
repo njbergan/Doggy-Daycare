@@ -34,8 +34,19 @@ public class viewAllOwnersServlet extends HttpServlet {
 		{
 			request.setAttribute("allOwners", " ");
 		}
-		getServletContext().getRequestDispatcher("/addDog.jsp").forward(request, response);
-	}
+		String fromJsp = request.getParameter("fromJsp");
+//		if (fromJsp.equals("/addDog.jsp")) {
+			getServletContext().getRequestDispatcher("/addDog.jsp").forward(request, response);
+//		} else { 
+//			getServletContext().getRequestDispatcher("/updateOwner.jsp").forward(request, response);
+//		}
+//		try {
+//			getServletContext().getRequestDispatcher(fromJsp).forward(request, response);
+//		} catch (Exception e) {
+//			getServletContext().getRequestDispatcher("/updateDog.jsp").forward(request, response);
+//		}
+		
+	}  //variablize the .jsp depending on who invoked it 
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

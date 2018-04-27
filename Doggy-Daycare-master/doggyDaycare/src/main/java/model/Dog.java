@@ -20,6 +20,10 @@ public class Dog {
 	private int dogId;
 	@Column(name="Owner_ID")
 	private int ownerId;
+	@Column(name="Age")
+	private int age;
+	@Column(name="Todays_Playground")	//new code 4-23
+	private int playgroundId;
 	@Column(name="Name")
 	private String name;
 	@Column(name="Breed")
@@ -30,7 +34,7 @@ public class Dog {
 	private int age;
 	@Column(name="Registration_Date", columnDefinition="DATE DEFAULT CURRENT_DATE")
 	private Date registrationDate;
-	@Column(name="Vaccinated", nullable=false, columnDefinition="BOOLEAN")
+	@Column(name="Vaccinations", nullable=false, columnDefinition="BOOLEAN")
 	private Boolean vaccinations = true;
 	@Column(name="Last_Visit")
 	private Date lastVisit;
@@ -44,13 +48,12 @@ public class Dog {
 	@ManyToOne
 	private Owner owner;
 	
-	@ManyToOne
-	private Classes classes;
-	
-	public Dog(int ownerId, String name, String breed, String gender, Date registrationDate, boolean vaccinations,
-			Date lastVisit, boolean activeFlag, int todaysPlayground, int todaysClasses) {
+	public Dog(int ownerId, int age, int playgroundId, String name, String breed, String gender, Date registrationDate, boolean vaccinations,
+			Date lastVisit, boolean activeFlag) {
 		super();
 		this.ownerId = ownerId;
+		this.age = age;
+		this.playgroundId = playgroundId;
 		this.name = name;
 		this.breed = breed;
 		this.gender = gender;
@@ -75,8 +78,8 @@ public class Dog {
 		this.dogId = dogId;
 		this.name = name;
 	}
-
-	public long getDogId() {
+	
+	public int getDogId() {
 		return dogId;
 	}
 
@@ -84,12 +87,28 @@ public class Dog {
 		this.dogId = dogId;
 	}
 
-	public long getOwnerId() {
+	public int getOwnerId() {
 		return ownerId;
 	}
 
 	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getPlaygroundId() {
+		return playgroundId;
+	}
+
+	public void setPlaygroundId(int playgroundId) {
+		this.playgroundId = playgroundId;
 	}
 
 	public String getName() {
@@ -148,11 +167,11 @@ public class Dog {
 		this.lastVisit = lastVisit;
 	}
 
-	public Boolean getActiveFlag() {
+	public boolean getActiveFlag() {
 		return activeFlag;
 	}
 
-	public void setActiveFlag(Boolean activeFlag) {
+	public void setActiveFlag(boolean activeFlag) {
 		this.activeFlag = activeFlag;
 	}
 	
@@ -176,6 +195,7 @@ public class Dog {
 		return new java.sql.Date(date.getTime());
 	}
 	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -187,7 +207,9 @@ public class Dog {
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((lastVisit == null) ? 0 : lastVisit.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
 		result = prime * result + ownerId;
+		result = prime * result + playgroundId;
 		result = prime * result + ((registrationDate == null) ? 0 : registrationDate.hashCode());
 		result = prime * result + todaysClasses;
 		result = prime * result + todaysPlayground;
@@ -233,7 +255,14 @@ public class Dog {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (owner == null) {
+			if (other.owner != null)
+				return false;
+		} else if (!owner.equals(other.owner))
+			return false;
 		if (ownerId != other.ownerId)
+			return false;
+		if (playgroundId != other.playgroundId)
 			return false;
 		if (registrationDate == null) {
 			if (other.registrationDate != null)
@@ -254,9 +283,11 @@ public class Dog {
 
 	@Override
 	public String toString() {
-		return "Dog [dogId=" + dogId + ", ownerId=" + ownerId + ", name=" + name + ", breed=" + breed + ", gender="
-				+ gender + ", age=" + age + ", registrationDate=" + registrationDate + ", vaccinations=" + vaccinations
-				+ ", lastVisit=" + lastVisit + ", activeFlag=" + activeFlag + ", todaysPlayground=" + todaysPlayground
-				+ ", todaysClasses=" + todaysClasses + "]";
+		return "Dog [dogId=" + dogId + ", ownerId=" + ownerId + ", age=" + age + ", playgroundId=" + playgroundId
+				+ ", name=" + name + ", breed=" + breed + ", gender=" + gender + ", registrationDate="
+				+ registrationDate + ", vaccinations=" + vaccinations + ", lastVisit=" + lastVisit + ", activeFlag="
+				+ activeFlag + ", owner=" + owner + "]";
+
 	}
+
 }
