@@ -34,11 +34,11 @@ public class viewAllOwnersServlet extends HttpServlet {
 		{
 			request.setAttribute("allOwners", " ");
 		}
-		String fromJsp = request.getParameter("fromJsp");
+//		String fromJsp = request.getParameter("fromJsp");
 //		if (fromJsp.equals("/addDog.jsp")) {
-			getServletContext().getRequestDispatcher("/addDog.jsp").forward(request, response);
+//			getServletContext().getRequestDispatcher("/addDog.jsp").forward(request, response);
 //		} else { 
-//			getServletContext().getRequestDispatcher("/updateOwner.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/updateOwner.jsp").forward(request, response);
 //		}
 //		try {
 //			getServletContext().getRequestDispatcher(fromJsp).forward(request, response);

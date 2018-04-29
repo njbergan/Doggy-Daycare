@@ -43,7 +43,7 @@ public class addDogServlet extends HttpServlet {
 //		doGet(request, response);
 		String name = request.getParameter("name");
 		Integer age = Integer.parseInt(request.getParameter("age"));
-        Integer owner = Integer.parseInt(request.getParameter("ownerId"));
+        Integer owner = Integer.parseInt(request.getParameter("owner"));
         Integer playground = Integer.parseInt(request.getParameter("playgroundId"));
         String breed = request.getParameter("breed");
 		String gender = request.getParameter("gender");

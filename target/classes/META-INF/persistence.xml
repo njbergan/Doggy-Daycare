@@ -8,12 +8,13 @@
 		<class>model.Owner</class>
 		<class>model.Victim</class>
 		<class>model.Classes</class>
+		<class>model.Playground</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/doggy_daycare?autoReconnect=true&amp;useSSL=false"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="eclipselink.jdbc.native-sql" value="true"/>
-			<property name="javax.persistence.jdbc.password" value="Nintendo69!"/>
+			<property name="javax.persistence.jdbc.password" value="Mia1006!"/>
 		</properties>
 	</persistence-unit>
 </persistence>
