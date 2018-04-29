@@ -121,7 +121,7 @@
 			<div class="form-group row"> 
 				<label for="ownerId" class="col-sm-3 col-form-label text-right">Owner</label>
 				<div class="col-sm-4">
-				  <select id="ownerId" class="form-control" name="ownerid">
+				  <select id="ownerId" class="form-control" name="owner">
     				<c:forEach items="${requestScope.allOwners}" var="owner">
         				<option value="${owner.ownerId}"><c:out value="${owner.firstName} ${owner.lastName}" /></option>
     				</c:forEach>  	
@@ -140,7 +140,6 @@
 			<input type="hidden" name="activeFlag" value="1">
 			<input type="hidden" name="registrationDate" value="25-4-2018">
 			<input type="hidden" name="lastVisit" value="25-4-2018">
-	 <!-- 	<input type="hidden" name="ownerId" value="1009"> --> 
 			<div class="form-group row">
 	<!-- 			<button id="submit" class="col-sm-2 col-sm-offset-5" type="button">Submit</button> -->
 				<input class="col-sm-2 col-sm-offset-5" type="submit" value="Submit">

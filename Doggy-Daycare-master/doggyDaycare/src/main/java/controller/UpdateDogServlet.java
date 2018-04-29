@@ -72,7 +72,7 @@ public class UpdateDogServlet extends HttpServlet {
 		
 		dogToUpdate.setName(name);
 		dogToUpdate.setOwnerId(owner);
-		dogToUpdate.setTodaysPlayground(playground);
+		dogToUpdate.setPlaygroundId(playground);
 		dogToUpdate.setBreed(breed);
 		dogToUpdate.setGender(gender);
 		dogToUpdate.setRegistrationDate(dogToUpdate.convertJavaToSqlDate(registration));

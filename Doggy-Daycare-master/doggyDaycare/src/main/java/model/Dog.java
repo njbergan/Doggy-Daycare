@@ -30,8 +30,6 @@ public class Dog {
 	private String breed;
 	@Column(name="Gender")
 	private String gender;
-	@Column(name="Age")
-	private int age;
 	@Column(name="Registration_Date", columnDefinition="DATE DEFAULT CURRENT_DATE")
 	private Date registrationDate;
 	@Column(name="Vaccinations", nullable=false, columnDefinition="BOOLEAN")
@@ -40,8 +38,6 @@ public class Dog {
 	private Date lastVisit;
 	@Column(name="Active_Flag", nullable=false, columnDefinition="BOOLEAN")
 	private Boolean activeFlag = true;
-	@Column(name="Todays_Playground")
-	private int todaysPlayground;
 	@Column(name="Todays_Classes")
 	private int todaysClasses;
 	
@@ -61,7 +57,6 @@ public class Dog {
 		this.vaccinations = vaccinations;
 		this.lastVisit = lastVisit;
 		this.activeFlag = activeFlag;
-		this.todaysPlayground = todaysPlayground;
 		this.todaysClasses = todaysClasses;
 	}
 	
@@ -135,14 +130,6 @@ public class Dog {
 		this.gender = gender;
 	}
 
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
 	public Date getRegistrationDate() {
 		return registrationDate;
 	}
@@ -175,13 +162,6 @@ public class Dog {
 		this.activeFlag = activeFlag;
 	}
 	
-	public int getTodaysPlayground() {
-		return todaysPlayground;
-	}
-
-	public void setTodaysPlayground(int todaysPlayground) {
-		this.todaysPlayground = todaysPlayground;
-	}
 
 	public int getTodaysClasses() {
 		return todaysClasses;
@@ -212,7 +192,6 @@ public class Dog {
 		result = prime * result + playgroundId;
 		result = prime * result + ((registrationDate == null) ? 0 : registrationDate.hashCode());
 		result = prime * result + todaysClasses;
-		result = prime * result + todaysPlayground;
 		result = prime * result + ((vaccinations == null) ? 0 : vaccinations.hashCode());
 		return result;
 	}
@@ -271,8 +250,6 @@ public class Dog {
 			return false;
 		if (todaysClasses != other.todaysClasses)
 			return false;
-		if (todaysPlayground != other.todaysPlayground)
-			return false;
 		if (vaccinations == null) {
 			if (other.vaccinations != null)
 				return false;
@@ -286,8 +263,7 @@ public class Dog {
 		return "Dog [dogId=" + dogId + ", ownerId=" + ownerId + ", age=" + age + ", playgroundId=" + playgroundId
 				+ ", name=" + name + ", breed=" + breed + ", gender=" + gender + ", registrationDate="
 				+ registrationDate + ", vaccinations=" + vaccinations + ", lastVisit=" + lastVisit + ", activeFlag="
-				+ activeFlag + ", owner=" + owner + "]";
-
+				+ activeFlag + ", todaysClasses=" + todaysClasses + ", owner=" + owner + "]";
 	}
 
 }
